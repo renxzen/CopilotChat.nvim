@@ -507,6 +507,16 @@ function M.gitdiff(type, winnr)
     table.insert(cmd, '--staged')
   end
 
+  if type:find('^diff') then
+    local parts = vim.split(type, ':')
+    if parts[2] then
+      table.insert(cmd, 5, parts[2])
+    end
+    if parts[3] then
+      table.insert(cmd, parts[3])
+    end
+  end
+
   local out = utils.system(cmd)
 
   return {
