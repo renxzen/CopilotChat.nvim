@@ -496,6 +496,7 @@ function M.gitdiff(type, winnr)
   local cwd = utils.win_cwd(winnr)
   local cmd = {
     'git',
+    '--no-pager',
     '-C',
     cwd,
     'diff',
@@ -510,7 +511,7 @@ function M.gitdiff(type, winnr)
   if type:find('^diff') then
     local parts = vim.split(type, ':')
     if parts[2] then
-      table.insert(cmd, 5, parts[2])
+      table.insert(cmd, 6, parts[2])
     end
     if parts[3] then
       table.insert(cmd, "--unified=" .. parts[3])
