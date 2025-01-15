@@ -513,7 +513,7 @@ function M.gitdiff(type, winnr)
       table.insert(cmd, 5, parts[2])
     end
     if parts[3] then
-      table.insert(cmd, parts[3])
+      table.insert(cmd, "--unified=" .. parts[3])
     end
   end
 
